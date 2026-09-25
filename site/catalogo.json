@@ -1,5 +1,70 @@
 {
-    "fuentes": [],
-    "rutas": [],
-    "auditoria_estado": "Saneado - Con Barrera de Seguridad"
+  "version": "1.0.0",
+  "generado_en": "2026-09-25T11:49:58.675221",
+  "fuentes": [
+    {
+      "id": "fuente-0001",
+      "titulo": "Plan de Negocios y Sostenibilidad 2027-2029",
+      "autor": "ONG Mecánica Social",
+      "anio": 2026,
+      "tipo": "documento-interno",
+      "url": "",
+      "licencia": "por-definir",
+      "estado": "borrador",
+      "verificada": "no",
+      "revisor": "pendiente",
+      "asistencia_ia": "no",
+      "rutas": "[ruta-04]",
+      "modulos": "[11-diseno-proyectos]",
+      "etiquetas": "[estrategia, plan-de-negocios]",
+      "resumen": "Hoja de ruta de la ONG para el trienio 2027-2029: identidad, portafolio, modelo de ingresos, gobernanza y riesgos. Cifras referenciales."
+    },
+    {
+      "id": "fuente-0002",
+      "titulo": "Plan de Marketing Estratégico 2027-2029",
+      "autor": "ONG Mecánica Social",
+      "anio": 2026,
+      "tipo": "documento-interno",
+      "url": "",
+      "licencia": "por-definir",
+      "estado": "borrador",
+      "verificada": "no",
+      "revisor": "pendiente",
+      "asistencia_ia": "no",
+      "rutas": "[ruta-02]",
+      "modulos": "[08-comunicacion-publica]",
+      "etiquetas": "[marketing, posicionamiento]",
+      "resumen": "Estrategia de posicionamiento, comunicaciones, alianzas y control de gestión que acompaña al plan de negocios."
+    },
+    {
+      "id": "ley-transparencia-municipal",
+      "titulo": "Ley N° 20.285 sobre Acceso a la Información Pública",
+      "tipo": "documento-oficial",
+      "autor": "Ministerio Secretaría General de la Presidencia",
+      "anio": 2008,
+      "url": "https://bcn.cl",
+      "estado": "aprobado",
+      "verificada": "si",
+      "ultima_verificacion": "2026-09-25",
+      "proxima_revision": "2027-09-25",
+      "resumen": "Marco regulatorio supremo que rige el principio de transparencia activa y el derecho de acceso a la información pública en corporaciones de derecho público, municipalidades y ministerios territoriales en Chile. Obliga a mantener a disposición permanente del público las plantas del personal, contrataciones y auditorías institucionales, sirviendo como bibliografía clave del Módulo de Gestión Pública y control del Sandbox de IA."
+    },
+    {
+      "id": "fuente-0003",
+      "titulo": "Mecánica Social IA, principios institucionales",
+      "autor": "ONG Mecánica Social",
+      "anio": 2026,
+      "tipo": "documento-interno",
+      "url": "",
+      "licencia": "por-definir",
+      "estado": "borrador",
+      "verificada": "no",
+      "revisor": "pendiente",
+      "asistencia_ia": "no",
+      "rutas": "[ruta-04]",
+      "modulos": "[12-tecnologia-ia, 13-etica-servicio-publico]",
+      "etiquetas": "[ia, etica, gobernanza]",
+      "resumen": "Principios, límites de uso, clasificación de riesgos y ciclo de vida de las soluciones de inteligencia artificial de la ONG."
+    }
+  ]
 }

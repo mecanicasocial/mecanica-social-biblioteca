@@ -1,18 +1,14 @@
-# Campos de una ficha de fuente
-
-| Campo | Obligatorio | Valores |
-|---|---|---|
-| id | sí | `fuente-0001`, único |
-| titulo | sí | texto |
-| autor | sí | texto |
-| anio | sí | número |
-| tipo | sí | libro, articulo, informe, normativa, documento-interno, sitio-web, video, visual |
-| url | no | dirección pública |
-| licencia | sí | por-definir, cc-by, dominio-publico, con-permiso, todos-los-derechos |
-| estado | sí | borrador, prueba, aprobado, restringido, obsoleto, suspendido, retirado |
-| verificada | sí | si / no |
-| revisor | sí | nombre o `pendiente` |
-| asistencia_ia | no | si / no |
-| rutas | no | lista de ids de ruta |
-| modulos | no | lista de carpetas de la Escuela |
-| etiquetas | no | lista |
+# 📋 Especificación de Metadatos de Fuentes (Ficha Fuente)
+---
+id: [string, formato slug único, ej: ley-transparencia-2026]
+titulo: [string]
+tipo: [enum: libro, articulo, ley, documento-oficial]
+autor: [string]
+anio: [integer]
+url: [string]
+estado: [enum: borrador, aprobado, rechazado]
+verificada: [enum: si, no]
+ultima_verificacion: [string, formato YYYY-MM-DD]
+proxima_revision: [string, formato YYYY-MM-DD]
+---
+El cuerpo de este archivo Markdown debe contener única y exclusivamente el resumen estratégico o abstract analítico de la fuente, el cual será consumido por el clúster de IA.

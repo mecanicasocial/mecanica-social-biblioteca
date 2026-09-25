@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org",
+  "title": "CatalogoFuentes",
+  "type": "object",
+  "required": ["version", "generado_en", "fuentes"],
+  "properties": {
+    "version": { "type": "string" },
+    "generado_en": { "type": "string" },
+    "fuentes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "titulo", "tipo", "autor", "anio", "url", "estado", "verificada", "resumen"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "titulo": { "type": "string" },
+          "tipo": { "type": "string", "enum": ["libro", "articulo", "ley", "documento-oficial"] },
+          "autor": { "type": "string" },
+          "anio": { "type": "integer" },
+          "url": { "type": "string" },
+          "estado": { "type": "string", "enum": ["borrador", "aprobado", "rechazado"] },
+          "verificada": { "type": "string", "enum": ["si", "no"] },
+          "ultima_verificacion": { "type": "string" },
+          "proxima_revision": { "type": "string" },
+          "resumen": { "type": "string" }
+        }
+      }
+    }
+  }
+}

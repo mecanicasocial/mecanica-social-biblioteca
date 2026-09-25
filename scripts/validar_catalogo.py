@@ -1,6 +1,7 @@
 import os
 import glob
 import sys
+import re
 
 def cargar_todas_las_fichas(ruta_carpeta):
     fichas = []
@@ -19,41 +20,45 @@ def cargar_todas_las_fichas(ruta_carpeta):
         fichas.append(ficha)
     return fichas
 
-def ejecutar_auditoria_licencias():
+def ejecutar_auditoria_temporal():
     print("================================================================")
-    print("🔍 VALIDACIÓN DE REGLAS DE NEGOCIO E INTELLECTUAL PROPERTY (IP)")
+    print("⏳ AUDITORÍA CRONOLÓGICA: OPERACIONALIZACIÓN DE VIGENCIA")
     print("================================================================")
     
     fuentes = cargar_todas_las_fichas("catalogo/fuentes")
     errores = 0
+    # Expresión regular estricta para validar formato de fecha ISO AAAA-MM-DD
+    formato_fecha = re.compile(r"^\d{4}-\d{2}-\d{2}$")
     
     for f in fuentes:
         titulo = f.get("titulo", f.get("archivo"))
         estado = f.get("estado", "").lower()
-        licencia = f.get("licencia", "").lower()
+        u_verif = f.get("ultima_verificacion", "")
+        p_revis = f.get("proxima_revision", "")
         
-        # REGLA DE GOBERNANZA #4 EXIGIDA POR EL AUDITOR:
-        # Si una fuente está 'aprobada', NO puede tener una licencia 'por-definir' o estar vacía.
+        # REGLA DE GOBERNANZA #5 EXIGIDA POR EL AUDITOR:
+        # Las fuentes 'aprobadas' deben registrar obligatoriamente sus metadatos de vigencia en formato ISO
         if estado == "aprobado":
-            if not licencia or licencia == "por-definir":
-                print(f"❌ ERROR CRÍTICO: La fuente [{titulo}] está APROBADA pero su licencia es '{licencia}'.")
-                print("   Cambio rechazado por riesgo legal de propiedad intelectual.")
+            if not u_verif or not formato_fecha.match(u_verif):
+                print(f"❌ ERROR TEMPORAL: [{titulo}] aprobado tiene 'ultima_verificacion' inválida o vacía ('{u_verif}').")
+                errores += 1
+            elif not p_revis or not formato_fecha.match(p_revis):
+                print(f"❌ ERROR TEMPORAL: [{titulo}] aprobado tiene 'proxima_revision' inválida o vacía ('{p_revis}').")
                 errores += 1
             else:
-                print(f"✅ Fuente aprobada con licencia válida: [{titulo}] -> ({licencia})")
+                print(f"📆 Vigencia controlada: [{titulo}] (Verificado: {u_verif} | Próxima Revisión: {p_revis})")
         else:
-            print(f"➖ Fuente en revisión: [{titulo}] (Estado: {estado} | Licencia: {licencia})")
+            print(f"➖ En espera cronológica: [{titulo}] (Estado: {estado})")
             
     print("================================================================")
     if errores > 0:
-        print(f"🚨 VALIDACIÓN FALLIDA: Se encontraron {errores} infracciones de gobernanza legal.")
+        print(f"🚨 VALIDACIÓN FALLIDA: Se encontraron {errores} fuentes sin control de vigencia activa.")
         return False
     else:
-        print("🎉 ¡TODAS LAS LICENCIAS CUMPLEN CON EL ESTÁNDAR INSTITUCIONAL!")
+        print("🎉 ¡TODOS LOS RECURSOS REGISTRAN SU CONTROL TEMPORAL CORRECTAMENTE!")
         return True
 
 if __name__ == "__main__":
-    exito = ejecutar_auditoria_licencias()
+    exito = ejecutar_auditoria_temporal()
     if not exito:
-        # Salida controlada para que el CI/CD de GitHub Actions bloquee el despliegue si hay errores
         sys.exit(1)

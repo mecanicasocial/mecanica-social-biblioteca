@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Biblioteca | ONG Mecánica Social</title>
+<meta name="description" content="Fuentes, bibliografía y rutas de aprendizaje de la ONG Mecánica Social.">
+<style>
+:root{--navy:#051c2c;--blue:#2251ff;--cyan:#00a9f4;--ink:#1f2933;--mute:#5b6b79;--line:#d9e0e6;--bg:#f5f7f9}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+h1,h2,h3{font-family:Georgia,serif;font-weight:400;color:var(--navy)}.w{max-width:1120px;margin:0 auto;padding:0 24px}
+.hero{background:var(--navy);color:#fff;padding:64px 0 48px}.hero h1{color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);max-width:760px}
+.hero p{color:#b8c7d3;margin:14px 0 24px;max-width:600px}.hero input{width:100%;max-width:520px;padding:14px;border:0;border-radius:8px;font-size:1rem}
+main{padding:40px 0}h2{font-size:1.6rem;margin:32px 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}
+.card h3{font-size:1.1rem;margin-bottom:6px}.card small{color:var(--mute)}
+.ruta{border-top:4px solid var(--blue)}.bar{height:8px;background:var(--line);border-radius:4px;margin:10px 0}.bar i{display:block;height:100%;background:var(--cyan);border-radius:4px;width:0}
+.mods label{display:block;font-size:.85rem;margin:4px 0;cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}.chips button,.link{border:1px solid var(--navy);background:#fff;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.8rem}
+.chips button.on{background:var(--navy);color:#fff}
+.b{display:inline-block;font-size:.7rem;padding:2px 8px;border-radius:10px;background:#eef2ff;color:var(--blue);margin:6px 4px 0 0}.b.w2{background:#fff4e0;color:#8a5a00}.b.ok{background:#e3f6ea;color:#1a6b3a}
+footer{background:var(--navy);color:#8fa3b3;padding:28px 0;font-size:.8rem;margin-top:40px}a{color:var(--blue)}
+</style></head><body>
+<div class="hero"><div class="w"><h1>Biblioteca de conocimiento para hacer funcionar la colaboración</h1>
+<p>Fuentes verificadas por personas y rutas de aprendizaje conectadas con la Escuela de Formación.</p>
+<input id="q" type="search" placeholder="Buscar por título, autor o etiqueta" aria-label="Buscar en el catálogo"></div></div>
+<main class="w">
+<h2>Rutas de aprendizaje</h2><div class="grid" id="rutas"></div>
+<h2>Catálogo de fuentes <span id="n" style="font-size:1rem;color:var(--mute)"></span></h2>
+<div class="chips" id="chips"></div><div class="grid" id="fuentes"></div>
+</main>
+<footer><div class="w">ONG Mecánica Social · Fuentes en revisión: solo las marcadas "verificada" han sido contrastadas por una persona. Contenido con asistencia de IA revisado por personas.</div></footer>
+<script>
+const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let D={fuentes:[],rutas:[]},filtro="todas",ruta=null;
+const K="ms-biblioteca-avance";
+function leer(){try{return JSON.parse(localStorage.getItem(K)||"{}")}catch(e){return{}}}
+function guardar(a){try{localStorage.setItem(K,JSON.stringify(a))}catch(e){}}
+function pintarRutas(){const av=leer();$("rutas").innerHTML=D.rutas.map(r=>{const m=r.modulos||[],h=m.filter(x=>av[r.id+"|"+x]).length,p=m.length?Math.round(h/m.length*100):0;
+return `<div class="card ruta"><h3>${esc(r.titulo)}</h3><small>${esc(r.linea)}</small><p style="margin-top:8px;font-size:.9rem">${esc(r.resumen)}</p>
+<div class="bar"><i style="width:${p}%"></i></div><small>${h} de ${m.length} módulos (${p}%)</small>
+<div class="mods">${m.map(x=>`<label><input type="checkbox" data-k="${esc(r.id)}|${esc(x)}" ${av[r.id+"|"+x]?"checked":""}> ${esc(x.replace(/^\d+-/,"").replace(/-/g," "))}</label>`).join("")}</div>
+<p style="margin-top:10px"><button class="link" data-r="${esc(r.id)}">Ver fuentes de la ruta</button></p></div>`}).join("");
+document.querySelectorAll("[data-k]").forEach(c=>c.onchange=()=>{const a=leer();a[c.dataset.k]=c.checked;guardar(a);pintarRutas()});
+document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{ruta=b.dataset.r;pintarFuentes();$("fuentes").scrollIntoView({behavior:"smooth"})})}
+function pintarChips(){const t=["todas",...new Set(D.fuentes.map(f=>f.tipo))];$("chips").innerHTML=t.map(x=>`<button class="${x===filtro?"on":""}" data-t="${esc(x)}">${esc(x)}</button>`).join("")+(ruta?`<button data-quitar="1">Quitar filtro de ruta ✕</button>`:"");
+document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{filtro=b.dataset.t;pintarFuentes()});const q=document.querySelector("[data-quitar]");if(q)q.onclick=()=>{ruta=null;pintarFuentes()}}
+function pintarFuentes(){const q=$("q").value.toLowerCase();
+const l=D.fuentes.filter(f=>(filtro==="todas"||f.tipo===filtro)&&(!ruta||(f.rutas||[]).includes(ruta))&&(f.titulo+f.autor+(f.etiquetas||[]).join(" ")).toLowerCase().includes(q));
+$("n").textContent="("+l.length+")";pintarChips();
+$("fuentes").innerHTML=l.length?l.map(f=>`<div class="card"><h3>${esc(f.titulo)}</h3><small>${esc(f.autor)} · ${esc(f.anio)}</small><p style="font-size:.9rem;margin-top:8px">${esc(f.resumen)}</p>
+<span class="b">${esc(f.tipo)}</span><span class="b ${f.estado==="aprobado"?"ok":"w2"}">${esc(f.estado)}</span>${f.verificada==="si"?'<span class="b ok">verificada</span>':'<span class="b w2">sin verificar</span>'}
+${f.url?`<p style="margin-top:10px"><a href="${esc(f.url)}" rel="noopener">Ir a la fuente</a></p>`:""}</div>`).join(""):"<p>No hay fuentes con esos criterios.</p>"}
+fetch("catalogo.json").then(r=>r.json()).then(d=>{D=d;pintarRutas();pintarFuentes()}).catch(()=>{$("fuentes").innerHTML="<p>No se pudo cargar el catálogo.</p>"});
+$("q").oninput=pintarFuentes;
+</script></body></html>

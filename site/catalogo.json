@@ -1,0 +1,132 @@
+{
+ "fuentes": [
+  {
+   "id": "fuente-0001",
+   "titulo": "Plan de Negocios y Sostenibilidad 2027-2029",
+   "autor": "ONG Mecánica Social",
+   "anio": "2026",
+   "tipo": "documento-interno",
+   "url": "",
+   "licencia": "por-definir",
+   "estado": "borrador",
+   "verificada": "no",
+   "revisor": "pendiente",
+   "asistencia_ia": "no",
+   "rutas": [
+    "ruta-04"
+   ],
+   "modulos": [
+    "11-diseno-proyectos"
+   ],
+   "etiquetas": [
+    "estrategia",
+    "plan-de-negocios"
+   ],
+   "resumen": "Hoja de ruta de la ONG para el trienio 2027-2029: identidad, portafolio, modelo de ingresos, gobernanza y riesgos. Cifras referenciales."
+  },
+  {
+   "id": "fuente-0002",
+   "titulo": "Plan de Marketing Estratégico 2027-2029",
+   "autor": "ONG Mecánica Social",
+   "anio": "2026",
+   "tipo": "documento-interno",
+   "url": "",
+   "licencia": "por-definir",
+   "estado": "borrador",
+   "verificada": "no",
+   "revisor": "pendiente",
+   "asistencia_ia": "no",
+   "rutas": [
+    "ruta-02"
+   ],
+   "modulos": [
+    "08-comunicacion-publica"
+   ],
+   "etiquetas": [
+    "marketing",
+    "posicionamiento"
+   ],
+   "resumen": "Estrategia de posicionamiento, comunicaciones, alianzas y control de gestión que acompaña al plan de negocios."
+  },
+  {
+   "id": "fuente-0003",
+   "titulo": "Mecánica Social IA, principios institucionales",
+   "autor": "ONG Mecánica Social",
+   "anio": "2026",
+   "tipo": "documento-interno",
+   "url": "",
+   "licencia": "por-definir",
+   "estado": "borrador",
+   "verificada": "no",
+   "revisor": "pendiente",
+   "asistencia_ia": "no",
+   "rutas": [
+    "ruta-04"
+   ],
+   "modulos": [
+    "12-tecnologia-ia",
+    "13-etica-servicio-publico"
+   ],
+   "etiquetas": [
+    "ia",
+    "etica",
+    "gobernanza"
+   ],
+   "resumen": "Principios, límites de uso, clasificación de riesgos y ciclo de vida de las soluciones de inteligencia artificial de la ONG."
+  }
+ ],
+ "rutas": [
+  {
+   "id": "ruta-01",
+   "titulo": "Educación cívica y liderazgo público",
+   "linea": "Educación cívica y liderazgo público",
+   "estado": "borrador",
+   "modulos": [
+    "01-democracia-ciudadania",
+    "02-historia-politica-chile",
+    "03-estado-instituciones",
+    "04-constitucion-derechos",
+    "07-liderazgo-social"
+   ],
+   "resumen": "Competencias para participar, decidir y rendir cuentas."
+  },
+  {
+   "id": "ruta-02",
+   "titulo": "Gestión comunitaria y participación",
+   "linea": "Gestión comunitaria y vinculación territorial",
+   "estado": "borrador",
+   "modulos": [
+    "10-participacion-ciudadana",
+    "08-comunicacion-publica",
+    "09-pensamiento-critico",
+    "15-incidencia-gestion"
+   ],
+   "resumen": "Acuerdos legítimos, comunicación y gobernanza local."
+  },
+  {
+   "id": "ruta-03",
+   "titulo": "Políticas públicas y presupuesto",
+   "linea": "Fortalecimiento institucional y evaluación",
+   "estado": "borrador",
+   "modulos": [
+    "05-politicas-publicas",
+    "06-presupuesto-publico",
+    "13-etica-servicio-publico"
+   ],
+   "resumen": "Diseño, financiamiento y ética de las políticas públicas."
+  },
+  {
+   "id": "ruta-04",
+   "titulo": "Proyectos, tecnología e innovación",
+   "linea": "RSE y valor compartido / Fortalecimiento",
+   "estado": "borrador",
+   "modulos": [
+    "11-diseno-proyectos",
+    "12-tecnologia-ia",
+    "14-innovacion-social",
+    "16-proyecto-final"
+   ],
+   "resumen": "Del diseño de proyectos a su ejecución, con tecnología e innovación social."
+  }
+ ]
+}

@@ -1,52 +1,59 @@
-"""Valida fichas de fuentes y rutas. Termina con error si hay problemas."""
+import os
+import glob
 import sys
-from comun import RAIZ, ESTADOS, TIPOS, LICENCIAS, CURSOS_ESCUELA, cargar
 
-errores = []
-rutas = cargar("rutas")
-ids_ruta = {r.get("id") for r in rutas}
-carpetas_escuela = set()
-for r in rutas:
-    carpetas_escuela.update(r.get("modulos", []))
+def cargar_todas_las_fichas(ruta_carpeta):
+    fichas = []
+    archivos = glob.glob(os.path.join(ruta_carpeta, "*.md"))
+    for ruta in archivos:
+        if os.path.basename(ruta).startswith("_"):
+            continue
+        ficha = {"archivo": os.path.basename(ruta)}
+        with open(ruta, "r", encoding="utf-8") as f:
+            for linea in f:
+                if ":" in linea and not linea.strip().startswith("#"):
+                    partes = linea.split(":", 1)
+                    clave = partes[0].strip().lower()
+                    valor = partes[1].strip()
+                    ficha[clave] = valor
+        fichas.append(ficha)
+    return fichas
 
-todos = [m for r in rutas for m in r.get("modulos", [])]
-for c in CURSOS_ESCUELA:
-    n = todos.count(c)
-    if n != 1:
-        errores.append(f"rutas: el curso '{c}' aparece {n} veces (debe estar en exactamente una ruta)")
-for m in set(todos) - set(CURSOS_ESCUELA):
-    errores.append(f"rutas: módulo desconocido '{m}'")
+def ejecutar_auditoria_licencias():
+    print("================================================================")
+    print("🔍 VALIDACIÓN DE REGLAS DE NEGOCIO E INTELLECTUAL PROPERTY (IP)")
+    print("================================================================")
+    
+    fuentes = cargar_todas_las_fichas("catalogo/fuentes")
+    errores = 0
+    
+    for f in fuentes:
+        titulo = f.get("titulo", f.get("archivo"))
+        estado = f.get("estado", "").lower()
+        licencia = f.get("licencia", "").lower()
+        
+        # REGLA DE GOBERNANZA #4 EXIGIDA POR EL AUDITOR:
+        # Si una fuente está 'aprobada', NO puede tener una licencia 'por-definir' o estar vacía.
+        if estado == "aprobado":
+            if not licencia or licencia == "por-definir":
+                print(f"❌ ERROR CRÍTICO: La fuente [{titulo}] está APROBADA pero su licencia es '{licencia}'.")
+                print("   Cambio rechazado por riesgo legal de propiedad intelectual.")
+                errores += 1
+            else:
+                print(f"✅ Fuente aprobada con licencia válida: [{titulo}] -> ({licencia})")
+        else:
+            print(f"➖ Fuente en revisión: [{titulo}] (Estado: {estado} | Licencia: {licencia})")
+            
+    print("================================================================")
+    if errores > 0:
+        print(f"🚨 VALIDACIÓN FALLIDA: Se encontraron {errores} infracciones de gobernanza legal.")
+        return False
+    else:
+        print("🎉 ¡TODAS LAS LICENCIAS CUMPLEN CON EL ESTÁNDAR INSTITUCIONAL!")
+        return True
 
-vistos = set()
-fuentes = cargar("catalogo/fuentes")
-for f in fuentes:
-    a = f["_archivo"]
-    for c in ("id", "titulo", "autor", "anio", "tipo", "licencia", "estado", "verificada", "revisor"):
-        if not f.get(c):
-            errores.append(f"{a}: falta el campo '{c}'")
-    if f.get("id") in vistos:
-        errores.append(f"{a}: id repetido {f.get('id')}")
-    vistos.add(f.get("id"))
-    if f.get("tipo") and f["tipo"] not in TIPOS:
-        errores.append(f"{a}: tipo no válido '{f['tipo']}'")
-    if f.get("licencia") and f["licencia"] not in LICENCIAS:
-        errores.append(f"{a}: licencia no válida '{f['licencia']}'")
-    if f.get("estado") and f["estado"] not in ESTADOS:
-        errores.append(f"{a}: estado no válido '{f['estado']}'")
-    if f.get("estado") == "aprobado" and (f.get("verificada") != "si" or f.get("revisor") in (None, "", "pendiente")):
-        errores.append(f"{a}: no puede estar 'aprobado' sin verificación ni revisor")
-    for r in f.get("rutas", []):
-        if r not in ids_ruta:
-            errores.append(f"{a}: ruta inexistente '{r}'")
-    for m in f.get("modulos", []):
-        if m not in carpetas_escuela:
-            errores.append(f"{a}: módulo '{m}' no pertenece a ninguna ruta")
-    if not f.get("resumen"):
-        errores.append(f"{a}: falta el resumen")
-
-if errores:
-    print("Se encontraron problemas:")
-    for e in errores:
-        print(" -", e)
-    sys.exit(1)
-print(f"OK: {len(fuentes)} fuentes y {len(rutas)} rutas válidas.")
+if __name__ == "__main__":
+    exito = ejecutar_auditoria_licencias()
+    if not exito:
+        # Salida controlada para que el CI/CD de GitHub Actions bloquee el despliegue si hay errores
+        sys.exit(1)

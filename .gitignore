@@ -1,0 +1,36 @@
+#================================================================
+# 🛡️ .GITIGNORE INSTITUTIONAL - ONG MECÁNICA SOCIAL
+#================================================================
+
+# Sistemas Operativos e Interfaces Locales (macOS / Windows / Linux)
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+
+# Intérpretes y Cachés de Ejecución de Software (Python / Node / Ruby)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+node_modules/
+.npm/
+npm-debug.log*
+
+# Entornos Virtuales y Variables de Entorno Confidenciales
+.venv/
+venv/
+ENV/
+env/
+.env
+.env.local
+
+# Archivos Temporales de Editores de Código
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.bak
+*.tmp

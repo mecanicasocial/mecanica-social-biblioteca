@@ -1,28 +1,62 @@
-"""Exporta fuentes aprobadas o en prueba a un glosario XML (experimental) y a un CSV para Moodle."""
+import os
+import json
 import csv
-from xml.sax.saxutils import escape
-from comun import RAIZ, cargar
+import glob
 
-salida = RAIZ / "moodle" / "export"
-salida.mkdir(parents=True, exist_ok=True)
-fuentes = [f for f in cargar("catalogo/fuentes") if f.get("estado") in ("aprobado", "prueba", "borrador")]
+def cargar_fichas_aprobadas(ruta_carpeta):
+    fichas = []
+    archivos = glob.glob(os.path.join(ruta_carpeta, "*.md"))
+    
+    for ruta in archivos:
+        if os.path.basename(ruta).startswith("_"):
+            continue
+        ficha = {"archivo": os.path.basename(ruta)}
+        with open(ruta, "r", encoding="utf-8") as f:
+            for linea in f:
+                if ":" in linea and not linea.strip().startswith("#"):
+                    partes = linea.split(":", 1)
+                    clave = partes[0].strip().lower()
+                    valor = partes[1].strip()
+                    ficha[clave] = valor
+        
+        # BARRERA DE SEGURIDAD CENTRALIZADA: 
+        # Únicamente se exporta lo aprobado y se vetan por completo los documentos internos
+        estado = ficha.get("estado", "").lower()
+        tipo = ficha.get("tipo", "").lower()
+        
+        if estado == "aprobado" and tipo != "documento-interno":
+            fichas.append(ficha)
+            
+    return fichas
 
-entradas = []
-for f in fuentes:
-    cuerpo = f"{f['resumen']}<br/>{escape(f['autor'])} ({f['anio']}). Estado: {f['estado']}."
-    if f.get("url"):
-        cuerpo += f' <a href="{escape(f["url"])}">Enlace</a>'
-    entradas.append(
-        f"<ENTRY><CONCEPT>{escape(f['titulo'])}</CONCEPT><DEFINITION>{cuerpo}</DEFINITION>"
-        f"<FORMAT>1</FORMAT><USEDYNALINK>0</USEDYNALINK><CASESENSITIVE>0</CASESENSITIVE><FULLMATCH>0</FULLMATCH></ENTRY>"
-    )
-xml = ('<?xml version="1.0" encoding="UTF-8"?>\n<GLOSSARY><INFO><NAME>Biblioteca Mecánica Social</NAME>'
-       '<INTRO>Fuentes del catálogo.</INTRO><INTROFORMAT>1</INTROFORMAT></INFO><ENTRIES>' + "".join(entradas) + "</ENTRIES></GLOSSARY>")
-(salida / "glosario-fuentes.xml").write_text(xml, encoding="utf-8")
+def exportar_a_moodle():
+    print("================================================================")
+    print("🔒 SANEANDO EXPORTADOR MOODLE: APLICANDO POLÍTICA DE PRIVACIDAD")
+    print("================================================================")
+    
+    fuentes_seguras = cargar_fichas_aprobadas("catalogo/fuentes")
+    
+    # Asegurar la existencia del directorio de salida para moodle
+    os.makedirs("moodle/export", exist_ok=True)
+    ruta_csv = "moodle/export/fuentes.csv"
+    
+    # Escribir el archivo CSV final filtrado libre de borradores o planes estratégicos
+    with open(ruta_csv, mode="w", newline="", encoding="utf-8") as archivo_csv:
+        writer = csv.writer(archivo_csv)
+        writer.writerow(["ID", "Título", "Tipo", "Estado", "Licencia"])
+        
+        for f in fuentes_seguras:
+            writer.writerow([
+                f.get("id", "S/I"),
+                f.get("titulo", f.get("archivo")),
+                f.get("tipo", "S/I"),
+                f.get("estado", "S/I"),
+                f.get("licencia", "S/I")
+            ])
+            print(f"📦 Indexado en CSV de clases: {f.get('titulo', f.get('archivo'))}")
+            
+    print(f"\n🎉 ¡Exportador Moodle alineado! Archivo guardado en: {ruta_csv}")
+    print("================================================================")
 
-with open(salida / "fuentes.csv", "w", newline="", encoding="utf-8") as fh:
-    w = csv.writer(fh)
-    w.writerow(["id", "titulo", "autor", "anio", "tipo", "estado", "url", "rutas"])
-    for f in fuentes:
-        w.writerow([f["id"], f["titulo"], f["autor"], f["anio"], f["tipo"], f["estado"], f.get("url", ""), ";".join(f.get("rutas", []))])
-print(f"Exportadas {len(fuentes)} fuentes a moodle/export/")
+if __name__ == "__main__":
+    exportar_a_moodle()

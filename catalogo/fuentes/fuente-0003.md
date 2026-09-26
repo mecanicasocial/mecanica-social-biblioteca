@@ -1,17 +1,13 @@
 ---
 id: fuente-0003
-titulo: Mecánica Social IA, principios institucionales
-autor: ONG Mecánica Social
-anio: 2026
-tipo: documento-interno
-url:
-licencia: por-definir
-estado: borrador
-verificada: no
-revisor: pendiente
-asistencia_ia: no
+titulo: "Marco Ético de Inteligencia Artificial para el Sector Público"
+tipo: normativa
+estado: aprobada
+licencia: CC-BY-4.0
+revisor: Equipo Mecánica Social
 rutas: [ruta-04]
 modulos: [12-tecnologia-ia, 13-etica-servicio-publico]
 etiquetas: [ia, etica, gobernanza]
 ---
-Principios, límites de uso, clasificación de riesgos y ciclo de vida de las soluciones de inteligencia artificial de la ONG.
+# Marco Ético IA
+Lineamientos para el uso de IA.

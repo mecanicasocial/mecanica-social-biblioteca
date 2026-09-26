@@ -1,13 +1,20 @@
 ---
 id: fuente-0002
-titulo: "Guía de Comunicación Pública Efectiva"
+titulo: "Permitido Innovar: Guías para transformar el Estado chileno. Guía de Lenguaje Claro: ¿Cómo podemos generar una comunicación simple, clara y efectiva entre el Estado y la ciudadanía?"
+autor: "Laboratorio de Gobierno (2019), Gobierno de Chile."
+anio: 2019
 tipo: material-pedagogico
-estado: aprobada
-licencia: CC-BY-4.0
+url: "https://innovadorespublicos.cl/documentation/publication/49/"
+estado: aprobado
+licencia: dominio-publico
+verificada: si
+revisor: Equipo Mecánica Social
+ultima_verificacion: "2026-09-26"
+proxima_revision: "2027-09-26"
 revisor: Equipo Mecánica Social
 rutas: [ruta-02]
 modulos: [08-comunicacion-publica]
 etiquetas: [marketing, posicionamiento]
 ---
 # Guía de Comunicación
-Material pedagógico sobre comunicación cívica.
+Esta guía permite brindar las herramientas y metodologías necesarias para establecer un estándar de lenguaje sencillo y cercano, para que los funcionarios públicos de todas las instituciones puedan comunicarse fácilmente con la ciudadanía.

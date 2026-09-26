@@ -1,29 +1,95 @@
 {
-  "$schema": "http://json-schema.org",
-  "title": "CatalogoFuentes",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mecanica-social.github.io/mecanica-social-biblioteca/catalogo.schema.json",
+  "title": "Contrato público del catálogo de Biblioteca",
+  "description": "Define site/catalogo.json: el único artefacto que Biblioteca expone hacia afuera. La Escuela y la IA lo usan; nunca deben leer catalogo/fuentes/*.md ni rutas/*.md directamente. NOTA DE RECONCILIACIÓN: esta versión reemplaza a la que se reescribió el 25-26 sept 2026 sin coordinación; se restauró porque las fichas reales (fuente-0001, 0002, 0003) ya usaban este formato, no el nuevo.",
   "type": "object",
-  "required": ["version", "generado_en", "fuentes"],
+  "required": ["version", "generado_en", "auditoria_estado", "fuentes", "rutas"],
+  "additionalProperties": false,
   "properties": {
-    "version": { "type": "string" },
-    "generado_en": { "type": "string" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "generado_en": { "type": "string", "format": "date-time" },
+    "auditoria_estado": { "type": "string" },
     "fuentes": {
       "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["id", "titulo", "tipo", "autor", "anio", "url", "estado", "verificada", "resumen"],
-        "properties": {
-          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
-          "titulo": { "type": "string" },
-          "tipo": { "type": "string", "enum": ["libro", "articulo", "ley", "documento-oficial"] },
-          "autor": { "type": "string" },
-          "anio": { "type": "integer" },
-          "url": { "type": "string" },
-          "estado": { "type": "string", "enum": ["borrador", "aprobado", "rechazado"] },
-          "verificada": { "type": "string", "enum": ["si", "no"] },
-          "ultima_verificacion": { "type": "string" },
-          "proxima_revision": { "type": "string" },
-          "resumen": { "type": "string" }
+      "description": "Solo fuentes con estado 'aprobado' y tipo distinto de 'documento-interno'. Lo aplica scripts/_comunes.py::es_fuente_publicable, usada tanto por construir_indice.py como por exportar_moodle.py — es la única función que decide esta regla, para que no puedan volver a divergir.",
+      "items": { "$ref": "#/definitions/fuente" }
+    },
+    "rutas": {
+      "type": "array",
+      "description": "Solo rutas con estado 'aprobado'.",
+      "items": { "$ref": "#/definitions/ruta" }
+    }
+  },
+  "definitions": {
+    "fuente": {
+      "type": "object",
+      "required": ["id", "titulo", "autor", "anio", "tipo", "licencia", "estado", "verificada", "revisor"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^fuente-[0-9]{4}$",
+          "description": "fuente-0001, único, incremental de 4 dígitos. Es la clave que referencian los cursos de la Escuela."
+        },
+        "titulo": { "type": "string" },
+        "autor": { "type": "string" },
+        "anio": { "type": "integer" },
+        "tipo": {
+          "type": "string",
+          "enum": ["libro", "articulo", "informe", "normativa", "documento-interno", "material-pedagogico", "sitio-web", "video", "visual"]
+        },
+        "url": { "type": "string" },
+        "licencia": {
+          "type": "string",
+          "enum": ["por-definir", "cc-by", "dominio-publico", "con-permiso", "todos-los-derechos"]
+        },
+        "estado": {
+          "type": "string",
+          "enum": ["borrador", "prueba", "aprobado", "restringido", "obsoleto", "suspendido", "retirado"]
+        },
+        "verificada": { "type": "string", "enum": ["si", "no"] },
+        "revisor": { "type": "string" },
+        "asistencia_ia": { "type": "string", "enum": ["si", "no"] },
+        "ultima_verificacion": { "type": "string", "format": "date" },
+        "proxima_revision": { "type": "string", "format": "date" },
+        "rutas": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^ruta-[0-9]{2}$" }
+        },
+        "modulos": {
+          "type": "array",
+          "description": "Slugs exactos de carpetas bajo mecanica-social-escuela/cursos/.",
+          "items": { "type": "string" }
+        },
+        "etiquetas": { "type": "array", "items": { "type": "string" } },
+        "resumen": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "estado": { "const": "aprobado" } } },
+          "then": { "required": ["ultima_verificacion", "proxima_revision"] }
         }
+      ]
+    },
+    "ruta": {
+      "type": "object",
+      "required": ["id", "titulo", "estado", "modulos"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^ruta-[0-9]{2}$" },
+        "titulo": { "type": "string" },
+        "linea": { "type": "string" },
+        "estado": {
+          "type": "string",
+          "enum": ["borrador", "prueba", "aprobado", "restringido", "obsoleto", "suspendido", "retirado"]
+        },
+        "modulos": {
+          "type": "array",
+          "description": "Slugs de carpetas de cursos que agrupa esta ruta.",
+          "items": { "type": "string" }
+        },
+        "resumen": { "type": "string" }
       }
     }
   }

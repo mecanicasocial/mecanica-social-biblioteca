@@ -1,13 +1,25 @@
 ---
-id: plantilla-fuente-slug
-titulo: "Título Oficial de la Fuente"
-tipo: ley
-autor: "Institución o Autor Corporativo"
+id: fuente-XXXX
+titulo: Nombre oficial del recurso o normativa
+autor: Institución o autoría
 anio: 2026
-url: "https://ejemplo.cl"
+tipo: normativa
+url:
+licencia: por-definir
 estado: borrador
 verificada: no
-ultima_verificacion: "2026-09-25"
-proxima_revision: "2027-09-25"
+revisor: pendiente
+asistencia_ia: no
+rutas: []
+modulos: []
+etiquetas: []
 ---
-Escriba aquí el cuerpo del documento. Este texto se transformará automáticamente en el campo "resumen" dentro de site/catalogo.json.
+Resumen analítico con tus propias palabras. No copies textos protegidos: cita
+brevemente y enlaza. Este párrafo es lo que verá quien navegue el catálogo.
+
+<!--
+Cuando cambies estado a "aprobado", agrega también:
+ultima_verificacion: AAAA-MM-DD
+proxima_revision: AAAA-MM-DD
+Ver catalogo/esquemas/ficha-fuente.md para el detalle de cada campo.
+-->

@@ -18,10 +18,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Validar catálogo
-        run: python scripts/validar_catalogo.py
+      # ORDEN CORREGIDO: antes "Validar" corría antes de "Construir", así que validaba
+      # un site/catalogo.json viejo, no el que realmente se iba a publicar. Ahora se
+      # construye primero y se valida el resultado real — si falla, el deploy se detiene.
       - name: Construir índice
         run: python scripts/construir_indice.py
+      - name: Validar catálogo
+        run: python scripts/validar_catalogo.py
       - name: Exportar Moodle
         run: python scripts/exportar_moodle.py
       - uses: actions/configure-pages@v5

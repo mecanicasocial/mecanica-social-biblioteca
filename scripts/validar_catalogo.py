@@ -14,7 +14,7 @@ Esta versión corrige eso en dos frentes:
    que simplemente no aparezca en el sitio sin explicación.
 
 No usa la librería jsonschema (para no depender de un pip install nuevo); implementa a mano
-el subconjunto de JSON Schema que este proyecto realmente usa.
+el subconjunto de JSON Schema que este proyecto realmente usa. Las 4 pruebas fueron corregidas.
 """
 
 import json

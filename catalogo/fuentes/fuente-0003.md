@@ -1,7 +1,7 @@
 ---
 id: fuente-0003
 titulo: "POLÍTICA NACIONAL DE INTELIGENCIA ARTIFICIAL"
-autor: "Ministerio de  Ciencia, Conocimiento, Tecnología e Innovación"
+autor: "Ministerio de Ciencia, Conocimiento, Tecnología e Innovación"
 anio: 2021
 tipo: normativa
 url: https://minciencia.gob.cl/uploads/filer_public/bc/38/bc389daf-4514-4306-867c-760ae7686e2c/documento_politica_ia_digital_.pdf

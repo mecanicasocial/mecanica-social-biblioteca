@@ -11,7 +11,7 @@ verificada: si
 revisor: Equipo Mecánica Social
 ultima_verificacion: 2026-09-26
 proxima_revision: 2027-09-26
-rutas: [ruta-04]
+rutas: [ruta-02, ruta-04]
 modulos: [12-tecnologia-ia, 13-etica-servicio-publico]
 etiquetas: [ia, etica, gobernanza]
 ---

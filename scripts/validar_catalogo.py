@@ -14,7 +14,7 @@ Esta versión corrige eso en dos frentes:
    que simplemente no aparezca en el sitio sin explicación.
 
 No usa la librería jsonschema (para no depender de un pip install nuevo); implementa a mano
-el subconjunto de JSON Schema que este proyecto realmente usa. Las 4 pruebas fueron corregidas.
+el subconjunto de JSON Schema que este proyecto realmente usa.
 """
 
 import json
@@ -109,6 +109,34 @@ def motivo_no_publicada(ficha, enum_estado):
     return "motivo no identificado — revisar manualmente"
 
 
+def validar_coherencia_rutas(fichas_fuente, fichas_ruta):
+    """Las rutas que declara una fuente deben ser exactamente las rutas que contienen sus
+    modulos (cursos). Antes nada lo comprobaba, y las fichas podían quedar declarando una
+    ruta que no correspondía (por ejemplo, confundir el curso '03' con la 'ruta-03')."""
+    modulos_por_ruta = {r.get("id"): set(r.get("modulos", [])) for _, r in fichas_ruta}
+    modulos_en_alguna_ruta = set()
+    for ms in modulos_por_ruta.values():
+        modulos_en_alguna_ruta |= ms
+
+    for nombre, f in fichas_fuente:
+        etiqueta = f"{CARPETA_FUENTES}/{nombre}"
+        modulos = f.get("modulos", [])
+        declaradas = f.get("rutas", [])
+        if not isinstance(modulos, list) or not isinstance(declaradas, list):
+            continue  # el tipo incorrecto ya lo reporta validar_objeto
+
+        for m in modulos:
+            if m not in modulos_en_alguna_ruta:
+                advertencia(f"{etiqueta}: el módulo '{m}' no pertenece a ninguna ruta en rutas/")
+
+        esperadas = sorted(r for r, ms in modulos_por_ruta.items() if ms & set(modulos))
+        if sorted(declaradas) != esperadas:
+            error(
+                f"{etiqueta}: 'rutas' declara {sorted(declaradas)} pero, según sus 'modulos' "
+                f"{modulos}, debería ser {esperadas}"
+            )
+
+
 def main():
     try:
         schema = json.load(open(RUTA_SCHEMA, encoding="utf-8"))
@@ -128,6 +156,8 @@ def main():
 
     for nombre, ficha in fichas_ruta:
         validar_objeto(ficha, def_ruta, f"{CARPETA_RUTAS}/{nombre}", exigir_obligatorios=False)
+
+    validar_coherencia_rutas(fichas_fuente, fichas_ruta)
 
     try:
         catalogo = json.load(open(RUTA_CATALOGO, encoding="utf-8"))

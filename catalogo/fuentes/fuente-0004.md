@@ -11,7 +11,7 @@ verificada: si
 revisor: Equipo Mecánica Social
 ultima_verificacion: "2026-09-26"
 proxima_revision: "2027-09-26"
-rutas: [ruta-01, ruta-03]
+rutas: [ruta-01]
 modulos: [01-democracia-ciudadania, 03-estado-instituciones]
 etiquetas: [transparencia, normativa, municipios]
 ---

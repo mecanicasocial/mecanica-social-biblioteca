@@ -12,7 +12,7 @@ revisor: Equipo Mecánica Social
 ultima_verificacion: "2026-09-26"
 proxima_revision: "2027-09-26"
 revisor: Equipo Mecánica Social
-rutas: [ruta-02]
+rutas: [ruta-03]
 modulos: [08-comunicacion-publica]
 etiquetas: [marketing, posicionamiento]
 ---

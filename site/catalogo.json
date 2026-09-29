@@ -1,7 +1,115 @@
 {
   "version": "1.0.0",
-  "generado_en": "2026-09-26T05:43:20.282397",
-  "auditoria_estado": "Saneado - 4 fuente(s) y 4 ruta(s) excluida(s) por no estar aprobadas o ser documento-interno",
-  "fuentes": [],
+  "generado_en": "2026-09-28T21:27:08.453000",
+  "auditoria_estado": "Saneado - 7 fuente(s) y 4 ruta(s) excluida(s) por no estar aprobadas o ser documento-interno",
+  "fuentes": [
+    {
+      "id": "fuente-0001",
+      "titulo": "Guía de Formación Cívica",
+      "autor": "Biblioteca del Congreso Nacional de Chile",
+      "anio": 2015,
+      "tipo": "material-pedagogico",
+      "url": "https://www.bcn.cl/formacioncivica/presentacion",
+      "estado": "aprobado",
+      "licencia": "dominio-publico",
+      "verificada": "si",
+      "revisor": "Equipo Mecánica Social",
+      "ultima_verificacion": "2026-09-27",
+      "proxima_revision": "2027-09-27",
+      "rutas": [
+        "ruta-01"
+      ],
+      "modulos": [
+        "01-democracia-ciudadania",
+        "03-estado-instituciones"
+      ],
+      "etiquetas": [
+        "transparencia",
+        "normativa",
+        "municipios"
+      ],
+      "resumen": "# La Guía de Formación Cívica es un documento elaborado por la Biblioteca del Congreso Nacional (BCN), como parte de su Programa de Formación Cívica. \nEsta iniciativa encontró un impulso adicional en el convenio suscrito por la BCN con el Senado, la Cámara de Diputados y el Ministerio Secretaría General de la Presidencia en 2015.\nEl objetivo de esta Guía es incentivar la reflexión y facilitar una mejor comprensión de la realidad social, fortalecer las habilidades que permitan participar más activamente en la vida cívica, así como promover normas y valores, tales como la pluralidad, la diversidad y la participación, considerados elementos claves de la convivencia democrática en la vida moderna (OCDE, 2003)."
+    },
+    {
+      "id": "fuente-0002",
+      "titulo": "Permitido Innovar: Guías para transformar el Estado chileno. Guía de Lenguaje Claro: ¿Cómo podemos generar una comunicación simple, clara y efectiva entre el Estado y la ciudadanía?",
+      "autor": "Laboratorio de Gobierno (2019), Gobierno de Chile.",
+      "anio": 2019,
+      "tipo": "material-pedagogico",
+      "url": "https://innovadorespublicos.cl/documentation/publication/49/",
+      "estado": "aprobado",
+      "licencia": "dominio-publico",
+      "verificada": "si",
+      "revisor": "Equipo Mecánica Social",
+      "ultima_verificacion": "2026-09-26",
+      "proxima_revision": "2027-09-26",
+      "rutas": [
+        "ruta-03"
+      ],
+      "modulos": [
+        "08-comunicacion-publica"
+      ],
+      "etiquetas": [
+        "marketing",
+        "posicionamiento"
+      ],
+      "resumen": "# Guía de Comunicación\nEsta guía permite brindar las herramientas y metodologías necesarias para establecer un estándar de lenguaje sencillo y cercano, para que los funcionarios públicos de todas las instituciones puedan comunicarse fácilmente con la ciudadanía."
+    },
+    {
+      "id": "fuente-0003",
+      "titulo": "POLÍTICA NACIONAL DE INTELIGENCIA ARTIFICIAL",
+      "autor": "Ministerio de Ciencia, Conocimiento, Tecnología e Innovación",
+      "anio": 2021,
+      "tipo": "normativa",
+      "url": "https://minciencia.gob.cl/uploads/filer_public/bc/38/bc389daf-4514-4306-867c-760ae7686e2c/documento_politica_ia_digital_.pdf",
+      "estado": "aprobado",
+      "licencia": "dominio-publico",
+      "verificada": "si",
+      "revisor": "Equipo Mecánica Social",
+      "ultima_verificacion": "2026-09-26",
+      "proxima_revision": "2027-09-26",
+      "rutas": [
+        "ruta-02",
+        "ruta-04"
+      ],
+      "modulos": [
+        "12-tecnologia-ia",
+        "13-etica-servicio-publico"
+      ],
+      "etiquetas": [
+        "ia",
+        "etica",
+        "gobernanza"
+      ],
+      "resumen": "# Marco Ético IA\nLineamientos para el uso de IA.\nChile publicó su primera Política Nacional de IA en 2021. Desde su publicación hemos sido testigos de significativos avances en la materia: la creación del Centro Nacional de Inteligencia Artificial (CENIA), la focalización en IA de becas de doctorado (ANID), la puesta en marcha de redes de 5G, el primer doctorado de IA en Chile y Latinoamérica, la implementación del Proyecto Algoritmos Éticos, entre otras medidas.  \nEsto ha posicionado a Chile en el primer lugar de la región en el Índice Latinoamericano de IA (CENIA, 2023). Entre las áreas que se destacan, se encuentran la infraestructura para datos, capital humano avanzado, investigación y conectividad, entre otros."
+    },
+    {
+      "id": "fuente-0004",
+      "titulo": "Ley de Transparencia de la Función Pública y de Acceso a la Información de la Administración del Estado",
+      "autor": "Ministerio Secretaría General de la Presidencia",
+      "anio": 2008,
+      "tipo": "normativa",
+      "url": "https://bcn.cl/25bya",
+      "estado": "aprobado",
+      "licencia": "dominio-publico",
+      "verificada": "si",
+      "revisor": "Equipo Mecánica Social",
+      "ultima_verificacion": "2026-09-26",
+      "proxima_revision": "2027-09-26",
+      "rutas": [
+        "ruta-01"
+      ],
+      "modulos": [
+        "01-democracia-ciudadania",
+        "03-estado-instituciones"
+      ],
+      "etiquetas": [
+        "transparencia",
+        "normativa",
+        "municipios"
+      ],
+      "resumen": "# Ley de Transparencia de la Función Pública y de Acceso a la Información de la Administración del Estado\nConocida como Ley N° 20.285, publicada el 20 de agosto de 2008. Regula el principio de\ntransparencia de la función pública y el derecho de acceso a la información de los órganos\nde la Administración del Estado, incluidas las municipalidades."
+    }
+  ],
   "rutas": []
 }

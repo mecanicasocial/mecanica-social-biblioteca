@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "generado_en": "2026-09-28T21:27:08.453000",
-  "auditoria_estado": "Saneado - 7 fuente(s) y 4 ruta(s) excluida(s) por no estar aprobadas o ser documento-interno",
+  "generado_en": "2026-09-28T21:37:37.293022",
+  "auditoria_estado": "Saneado - 0 fuente(s) y 0 ruta(s) excluida(s) por no estar aprobadas o ser documento-interno",
   "fuentes": [
     {
       "id": "fuente-0001",
@@ -109,7 +109,252 @@
         "municipios"
       ],
       "resumen": "# Ley de Transparencia de la Función Pública y de Acceso a la Información de la Administración del Estado\nConocida como Ley N° 20.285, publicada el 20 de agosto de 2008. Regula el principio de\ntransparencia de la función pública y el derecho de acceso a la información de los órganos\nde la Administración del Estado, incluidas las municipalidades."
+    },
+    {
+      "id": "fuente-0005",
+      "titulo": "Constitución Política de la República de Chile (texto refundido, coordinado y sistematizado por el Decreto Supremo N° 100 de 2005)",
+      "autor": "Ministerio Secretaría General de la Presidencia",
+      "anio": 2005,
+      "tipo": "normativa",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=242302",
+      "estado": "aprobado",
+      "licencia": "dominio-publico",
+      "verificada": "si",
+      "revisor": "Equipo Mecánica Social",
+      "rutas": [
+        "ruta-01"
+      ],
+      "modulos": [
+        "01-democracia-ciudadania",
+        "03-estado-instituciones",
+        "04-constitucion-derechos"
+      ],
+      "etiquetas": [
+        "constitucion",
+        "derechos",
+        "institucionalidad"
+      ],
+      "ultima_verificacion": "2026-09-28",
+      "proxima_revision": "2027-09-28",
+      "resumen": "# Constitución Política de la República de Chile (texto refundido, coordinado y sistematizado por el Decreto Supremo N° 100 de 2005)\nTexto refundido, coordinado y sistematizado de la Constitución Política, fijado por el Decreto Supremo N° 100 y publicado el 22 de septiembre de 2005. Es la norma base sobre bases de la institucionalidad, derechos y deberes, y organización de los poderes del Estado."
+    },
+    {
+      "id": "fuente-0006",
+      "titulo": "Ley Orgánica Constitucional de Bases Generales de la Administración del Estado (texto refundido, DFL N° 1/19.653 de 2000)",
+      "autor": "Ministerio Secretaría General de la Presidencia",
+      "anio": 2001,
+      "tipo": "normativa",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=191865",
+      "estado": "aprobado",
+      "licencia": "dominio-publico",
+      "verificada": "si",
+      "revisor": "Equipo Mecánica Social",
+      "rutas": [
+        "ruta-01",
+        "ruta-03"
+      ],
+      "modulos": [
+        "03-estado-instituciones",
+        "05-politicas-publicas"
+      ],
+      "etiquetas": [
+        "administracion-del-estado",
+        "organizacion",
+        "politicas-publicas"
+      ],
+      "ultima_verificacion": "2026-09-28",
+      "proxima_revision": "2027-09-28",
+      "resumen": "# Ley Orgánica Constitucional de Bases Generales de la Administración del Estado (texto refundido, DFL N° 1/19.653 de 2000)\nTexto refundido de la Ley N° 18.575, publicado el 17 de noviembre de 2001. Define cómo se organiza y funciona la Administración del Estado: ministerios, servicios públicos y los principios que rigen su actuación."
+    },
+    {
+      "id": "fuente-0007",
+      "titulo": "Decreto Ley Orgánico de Administración Financiera del Estado (D.L. N° 1.263 de 1975)",
+      "autor": "Ministerio de Hacienda",
+      "anio": 1975,
+      "tipo": "normativa",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=6536",
+      "estado": "aprobado",
+      "licencia": "dominio-publico",
+      "verificada": "si",
+      "revisor": "Equipo Mecánica Social",
+      "rutas": [
+        "ruta-03"
+      ],
+      "modulos": [
+        "06-presupuesto-publico"
+      ],
+      "etiquetas": [
+        "presupuesto",
+        "finanzas-publicas",
+        "administracion-financiera"
+      ],
+      "ultima_verificacion": "2026-09-28",
+      "proxima_revision": "2027-09-28",
+      "resumen": "# Decreto Ley Orgánico de Administración Financiera del Estado (D.L. N° 1.263 de 1975)\nDecreto Ley publicado el 28 de noviembre de 1975 que regula la administración financiera del Estado: el proceso presupuestario, la administración de fondos, la contabilidad y el control financiero de los organismos públicos."
+    },
+    {
+      "id": "fuente-0008",
+      "titulo": "Ley N° 20.500 sobre Asociaciones y Participación Ciudadana en la Gestión Pública",
+      "autor": "Ministerio Secretaría General de Gobierno",
+      "anio": 2011,
+      "tipo": "normativa",
+      "url": "https://bcn.cl/2eoup",
+      "estado": "aprobado",
+      "licencia": "dominio-publico",
+      "verificada": "si",
+      "revisor": "Equipo Mecánica Social",
+      "rutas": [
+        "ruta-02"
+      ],
+      "modulos": [
+        "10-participacion-ciudadana",
+        "15-incidencia-gestion"
+      ],
+      "etiquetas": [
+        "participacion-ciudadana",
+        "sociedad-civil",
+        "asociaciones"
+      ],
+      "ultima_verificacion": "2026-09-28",
+      "proxima_revision": "2027-09-28",
+      "resumen": "# Ley N° 20.500 sobre Asociaciones y Participación Ciudadana en la Gestión Pública\nLey publicada el 16 de febrero de 2011. Reconoce el derecho de asociación, regula el registro de personas jurídicas sin fines de lucro y las organizaciones de interés público, e institucionaliza la participación ciudadana en la gestión pública, incluidos los consejos de la sociedad civil."
+    },
+    {
+      "id": "fuente-0009",
+      "titulo": "Ley N° 20.880 sobre Probidad en la Función Pública y Prevención de los Conflictos de Intereses",
+      "autor": "Ministerio Secretaría General de la Presidencia",
+      "anio": 2016,
+      "tipo": "normativa",
+      "url": "https://bcn.cl/2ep8u",
+      "estado": "aprobado",
+      "licencia": "dominio-publico",
+      "verificada": "si",
+      "revisor": "Equipo Mecánica Social",
+      "rutas": [
+        "ruta-01",
+        "ruta-02"
+      ],
+      "modulos": [
+        "03-estado-instituciones",
+        "13-etica-servicio-publico"
+      ],
+      "etiquetas": [
+        "probidad",
+        "conflictos-de-intereses",
+        "etica-publica"
+      ],
+      "ultima_verificacion": "2026-09-28",
+      "proxima_revision": "2027-09-28",
+      "resumen": "# Ley N° 20.880 sobre Probidad en la Función Pública y Prevención de los Conflictos de Intereses\nLey publicada el 5 de enero de 2016. Regula el principio de probidad en el ejercicio de la función pública y la prevención y sanción de los conflictos de intereses, incluida la declaración de intereses y patrimonio. Su reglamento es el Decreto N° 2 de 2016."
+    },
+    {
+      "id": "fuente-0010",
+      "titulo": "Ley N° 20.730 que regula el Lobby y las Gestiones que Representen Intereses Particulares ante las Autoridades y Funcionarios",
+      "autor": "Ministerio Secretaría General de la Presidencia",
+      "anio": 2014,
+      "tipo": "normativa",
+      "url": "https://www.bcn.cl/leychile/navegar?i=1060115",
+      "estado": "aprobado",
+      "licencia": "dominio-publico",
+      "verificada": "si",
+      "revisor": "Equipo Mecánica Social",
+      "rutas": [
+        "ruta-02"
+      ],
+      "modulos": [
+        "13-etica-servicio-publico",
+        "15-incidencia-gestion"
+      ],
+      "etiquetas": [
+        "lobby",
+        "transparencia",
+        "incidencia"
+      ],
+      "ultima_verificacion": "2026-09-28",
+      "proxima_revision": "2027-09-28",
+      "resumen": "# Ley N° 20.730 que regula el Lobby y las Gestiones que Representen Intereses Particulares ante las Autoridades y Funcionarios\nLey publicada el 8 de marzo de 2014. Regula la publicidad de la actividad de lobby y de las gestiones de intereses particulares ante las autoridades, para fortalecer la transparencia y la probidad en la relación con los órganos del Estado. Su reglamento es el Decreto N° 71 de 2014."
+    },
+    {
+      "id": "fuente-0011",
+      "titulo": "Ley N° 21.180 sobre Transformación Digital del Estado",
+      "autor": "Ministerio Secretaría General de la Presidencia",
+      "anio": 2019,
+      "tipo": "normativa",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1138479",
+      "estado": "aprobado",
+      "licencia": "dominio-publico",
+      "verificada": "si",
+      "revisor": "Equipo Mecánica Social",
+      "rutas": [
+        "ruta-01",
+        "ruta-04"
+      ],
+      "modulos": [
+        "03-estado-instituciones",
+        "12-tecnologia-ia"
+      ],
+      "etiquetas": [
+        "transformacion-digital",
+        "gobierno-digital",
+        "procedimiento-administrativo"
+      ],
+      "ultima_verificacion": "2026-09-28",
+      "proxima_revision": "2027-09-28",
+      "resumen": "# Ley N° 21.180 sobre Transformación Digital del Estado\nLey publicada el 11 de noviembre de 2019. Modifica la Ley N° 19.880 para que los procedimientos administrativos se realicen por medios electrónicos (expediente electrónico, notificaciones digitales), con una entrada en vigencia gradual determinada por reglamento."
     }
   ],
-  "rutas": []
+  "rutas": [
+    {
+      "id": "ruta-01",
+      "titulo": "Educación cívica y liderazgo público",
+      "linea": "Educación cívica y liderazgo público",
+      "estado": "aprobado",
+      "modulos": [
+        "01-democracia-ciudadania",
+        "02-historia-politica-chile",
+        "03-estado-instituciones",
+        "04-constitucion-derechos"
+      ],
+      "resumen": "Competencias para participar, decidir y rendir cuentas."
+    },
+    {
+      "id": "ruta-02",
+      "titulo": "Gestión comunitaria y participación",
+      "linea": "Gestión comunitaria y vinculación territorial",
+      "estado": "aprobado",
+      "modulos": [
+        "07-liderazgo-social",
+        "10-participacion-ciudadana",
+        "13-etica-servicio-publico",
+        "15-incidencia-gestion"
+      ],
+      "resumen": "Liderazgo, participación, ética e incidencia para la gestión comunitaria."
+    },
+    {
+      "id": "ruta-03",
+      "titulo": "Políticas públicas y presupuesto",
+      "linea": "Fortalecimiento institucional y evaluación",
+      "estado": "aprobado",
+      "modulos": [
+        "05-politicas-publicas",
+        "06-presupuesto-publico",
+        "08-comunicacion-publica",
+        "09-pensamiento-critico"
+      ],
+      "resumen": "Diseño, financiamiento, comunicación y análisis crítico de las políticas públicas."
+    },
+    {
+      "id": "ruta-04",
+      "titulo": "Proyectos, tecnología e innovación",
+      "linea": "RSE y valor compartido / Fortalecimiento",
+      "estado": "aprobado",
+      "modulos": [
+        "11-diseno-proyectos",
+        "12-tecnologia-ia",
+        "14-innovacion-social",
+        "16-proyecto-final"
+      ],
+      "resumen": "Del diseño de proyectos a su ejecución, con tecnología e innovación social."
+    }
+  ]
 }
